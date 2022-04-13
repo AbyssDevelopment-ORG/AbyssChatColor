@@ -75,7 +75,6 @@ public final class ColorMenu extends AbyssMenu {
                     return;
                 }
 
-                profile.setColorName(WordUtils.formatText(item.getName()));
                 profile.setColor(item.getColor());
 
                 this.plugin.getMessageCache().sendMessage(player, "messages.set-color", new PlaceholderReplacer()
@@ -118,6 +117,6 @@ public final class ColorMenu extends AbyssMenu {
             this.open(player);
         });
 
-        player.openInventory(builder.build(new PlaceholderReplacer().addPlaceholder("%color%", profile.getColorName())));
+        player.openInventory(builder.build());
     }
 }

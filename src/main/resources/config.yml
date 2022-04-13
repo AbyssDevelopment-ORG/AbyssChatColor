@@ -16,8 +16,7 @@ menus:
             slot: 31
             material: "ANVIL"
             name: "&cReset Color"
-            lore:
-                - "&7Current Color: &f%color%"
+            lore: []
         bold:
             slot: 29
             permission: "abysschatcolor.bold"
