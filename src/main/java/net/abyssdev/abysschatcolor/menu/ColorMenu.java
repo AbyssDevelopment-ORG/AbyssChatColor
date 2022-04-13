@@ -19,32 +19,32 @@ public final class ColorMenu extends AbyssMenu {
     private final ColorItem[] colorItems;
 
     public ColorMenu(final AbyssChatColor plugin) {
-        super(plugin.getConfig(), "menus.chat-color.");
+        super(plugin.getConfig(), "menus.color-menu.");
 
         this.plugin = plugin;
 
         this.bold = new ToggleItem(
-                new ItemBuilder(plugin.getConfig(), "menus.chat-color.bold.enabled").parse(),
-                new ItemBuilder(plugin.getConfig(), "menus.chat-color.bold.disabled").parse(),
-                plugin.getConfig().getInt("menus.chat-color.bold.slot"));
+                new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.enabled").parse(),
+                new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.disabled").parse(),
+                plugin.getConfig().getInt("menus.color-menu.bold.slot"));
 
         this.italic = new ToggleItem(
-                new ItemBuilder(plugin.getConfig(), "menus.chat-color.italic.enabled").parse(),
-                new ItemBuilder(plugin.getConfig(), "menus.chat-color.italic.disabled").parse(),
-                plugin.getConfig().getInt("menus.chat-color.italic.slot"));
+                new ItemBuilder(plugin.getConfig(), "menus.color-menu.italic.enabled").parse(),
+                new ItemBuilder(plugin.getConfig(), "menus.color-menu.italic.disabled").parse(),
+                plugin.getConfig().getInt("menus.color-menu.italic.slot"));
 
-        final ConfigurationSection section = plugin.getConfig().getConfigurationSection("menus.chat-color.color-items");
+        final ConfigurationSection section = plugin.getConfig().getConfigurationSection("menus.color-menu.color-items");
 
         this.colorItems = new ColorItem[section.getKeys(false).size()];
 
         int index = 0;
         for (final String key : section.getKeys(false)) {
             this.colorItems[index] = new ColorItem(
-                    new ItemBuilder(plugin.getConfig(), "menus.chat-color.color-items." + key).parse(),
+                    new ItemBuilder(plugin.getConfig(), "menus.color-menu.color-items." + key).parse(),
                     key,
-                    plugin.getConfig().getString("menus.chat-color.color-items." + key + ".color"),
-                    plugin.getConfig().getString("menus.chat-color.color-items." + key + ".permission"),
-                    plugin.getConfig().getInt("menus.chat-color.color-items." + key + ".slot"));
+                    plugin.getConfig().getString("menus.color-menu.color-items." + key + ".color"),
+                    plugin.getConfig().getString("menus.color-menu.color-items." + key + ".permission"),
+                    plugin.getConfig().getInt("menus.color-menu.color-items." + key + ".slot"));
 
             index++;
         }

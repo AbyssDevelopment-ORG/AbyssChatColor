@@ -19,14 +19,16 @@ public final class AbyssChatColor extends AbyssPlugin {
     private final String defaultColor = this.getConfig().getString("settings.default-color");
     private final MessageCache messageCache = new MessageCache(this.getConfig());
     private final JsonStorage<UUID, ColorPlayer> storage = new ChatColorStorage(this);
-    private final AbyssMenu colorMenu = new ColorMenu(this);
     private final ColorCommand command = new ColorCommand(this);
+
+    private AbyssMenu colorMenu;
 
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
         this.loadMessages(this.messageCache, this.getConfig());
 
+        this.colorMenu = new ColorMenu(this);
         this.command.register();
 
         new ColorPlaceholderExpansion(this).register();
