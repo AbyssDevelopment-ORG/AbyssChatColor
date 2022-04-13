@@ -1,0 +1,8 @@
+name: AbyssChatColor
+version: '${project.version}'
+main: net.abyssdev.abysschatcolor.AbyssChatColor
+depend:
+    - AbyssLib
+    - PlaceholderAPI
+authors:
+    - Relocation

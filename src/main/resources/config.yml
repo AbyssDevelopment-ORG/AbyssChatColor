@@ -1,0 +1,108 @@
+settings:
+    default-color: "&7"
+
+menus:
+    "color-menu":
+        title: "&8&lCHOOSE A COLOR"
+        rows: 4
+        borders:
+            "gray":
+                material: "GRAY_STAINED_GLASS_PANE"
+                name: " "
+                lore: []
+                slots:
+                    - "0-35"
+        bold:
+            slot: 30
+            permission: "abysschatcolor.bold"
+            "enabled":
+                material: "LIME_DYE"
+                name: "&aBold Chat &7(Enabled)"
+                lore: []
+            "disabled":
+                material: "RED_DYE"
+                name: "&cBold Chat &7(Enabled)"
+                lore: []
+        italic:
+            slot: 32
+            permission: "abysschatcolor.italic"
+            "enabled":
+                material: "LIME_DYE"
+                name: "&aItalic Chat &7(Enabled)"
+                lore: []
+            "disabled":
+                material: "RED_DYE"
+                name: "&cItalic Chat &7(Enabled)"
+                lore: []
+        color-items:
+            "red":
+                permission: "abysschatcolor.red"
+                color: "&c"
+                slot: 10
+                material: "RED_STAINED_GLASS_PANE"
+                name: "&cRed"
+                lore: []
+            "light_blue":
+                permission: "abysschatcolor.light-blue"
+                color: "&b"
+                slot: 11
+                material: "RED_STAINED_GLASS_PANE"
+                name: "&bLight Blue"
+                lore: []
+            "lime":
+                permission: "abysschatcolor.lime"
+                color: "&a"
+                slot: 12
+                material: "LIME_STAINED_GLASS_PANE"
+                name: "&aLime"
+                lore: []
+            "yellow":
+                permission: "abysschatcolor.yellow"
+                color: "&e"
+                slot: 13
+                material: "YELLOW_STAINED_GLASS_PANE"
+                name: "&eYellow"
+                lore: []
+            "orange":
+                permission: "abysschatcolor.orange"
+                color: "&6"
+                slot: 14
+                material: "ORANGE_STAINED_GLASS_PANE"
+                name: "&6Orange"
+                lore: []
+            "pink":
+                permission: "abysschatcolor.pink"
+                color: "&d"
+                slot: 15
+                material: "PINK_STAINED_GLASS_PANE"
+                name: "&dPink"
+                lore: []
+            "purple":
+                permission: "abysschatcolor.purple"
+                color: "&5"
+                slot: 16
+                material: "PURPLESTAINED_GLASS_PANE"
+                name: "&5Purple"
+                lore: []
+
+messages:
+    "no-permission":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c&lAbyss &8- &cNo permission!"
+    "set-color":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&e&lAbyss &8- &eYou have set your chat color to &6%color%&e."
