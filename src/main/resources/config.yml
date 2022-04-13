@@ -12,8 +12,14 @@ menus:
                 lore: []
                 slots:
                     - "0-35"
+        reset:
+            slot: 31
+            material: "ANVIL"
+            name: "&cReset Color"
+            lore:
+                - "&7Current Color: &f%color%"
         bold:
-            slot: 30
+            slot: 29
             permission: "abysschatcolor.bold"
             "enabled":
                 material: "LIME_DYE"
@@ -24,7 +30,7 @@ menus:
                 name: "&cBold Chat &7(Disabled)"
                 lore: []
         italic:
-            slot: 32
+            slot: 33
             permission: "abysschatcolor.italic"
             "enabled":
                 material: "LIME_DYE"
@@ -106,3 +112,13 @@ messages:
             enabled: true
             value:
                 - "&e&lAbyss &8- &eYou have set your chat color to &6%color%&e."
+    "reset-color":
+        sound:
+            enabled: true
+            value: "BLOCK_NOTE_PLING"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&e&lAbyss &8- &eYou have reset your chat color."

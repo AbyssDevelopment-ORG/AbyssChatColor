@@ -6,6 +6,7 @@ import net.abyssdev.abysschatcolor.menu.item.ToggleItem;
 import net.abyssdev.abysschatcolor.player.ColorPlayer;
 import net.abyssdev.abysslib.builders.ItemBuilder;
 import net.abyssdev.abysslib.menu.MenuBuilder;
+import net.abyssdev.abysslib.menu.item.MenuItem;
 import net.abyssdev.abysslib.menu.templates.AbyssMenu;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
 import net.abyssdev.abysslib.utils.WordUtils;
@@ -15,6 +16,7 @@ import org.bukkit.entity.Player;
 public final class ColorMenu extends AbyssMenu {
 
     private final AbyssChatColor plugin;
+    private final MenuItem reset;
     private final ToggleItem bold, italic;
     private final ColorItem[] colorItems;
 
@@ -22,6 +24,10 @@ public final class ColorMenu extends AbyssMenu {
         super(plugin.getConfig(), "menus.color-menu.");
 
         this.plugin = plugin;
+
+        this.reset = new MenuItem(
+                new ItemBuilder(plugin.getConfig(), "menus.color-menu.reset").parse(),
+                plugin.getConfig().getInt("menus.color-menu.reset.slot"));
 
         this.bold = new ToggleItem(
                 new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.enabled").parse(),
@@ -69,7 +75,9 @@ public final class ColorMenu extends AbyssMenu {
                     return;
                 }
 
+                profile.setColorName(WordUtils.formatText(item.getName()));
                 profile.setColor(item.getColor());
+
                 this.plugin.getMessageCache().sendMessage(player, "messages.set-color", new PlaceholderReplacer()
                         .addPlaceholder("%color%", WordUtils.formatText(item.getName()
                                 .replace("-", " ")
@@ -78,8 +86,15 @@ public final class ColorMenu extends AbyssMenu {
             });
         }
 
+        builder.setItem(this.reset.getSlot(), this.reset.getItem());
         builder.setItem(this.bold.getSlot(), profile.isBold() ? this.bold.getEnabled() : this.bold.getDisabled());
         builder.setItem(this.italic.getSlot(), profile.isItalic() ? this.italic.getEnabled() : this.italic.getDisabled());
+
+        builder.addClickEvent(this.reset.getSlot(), event -> {
+            profile.setColorName("None");
+            profile.setColor(this.plugin.getDefaultColor());
+            this.plugin.getMessageCache().sendMessage(player, "messages.reset-color");
+        });
 
         builder.addClickEvent(this.bold.getSlot(), event -> {
             if (!player.hasPermission(this.bold.getPermission())) {
@@ -103,6 +118,6 @@ public final class ColorMenu extends AbyssMenu {
             this.open(player);
         });
 
-        player.openInventory(builder.build());
+        player.openInventory(builder.build(new PlaceholderReplacer().addPlaceholder("%color%", profile.getColorName())));
     }
 }
