@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public final class ToggleItem {
 
     private final ItemStack enabled, disabled;
+    private final String permission;
     private final int slot;
 
 }

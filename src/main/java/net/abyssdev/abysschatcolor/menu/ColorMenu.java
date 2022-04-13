@@ -26,11 +26,13 @@ public final class ColorMenu extends AbyssMenu {
         this.bold = new ToggleItem(
                 new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.enabled").parse(),
                 new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.disabled").parse(),
+                plugin.getConfig().getString("menus.color-menu.bold.permission"),
                 plugin.getConfig().getInt("menus.color-menu.bold.slot"));
 
         this.italic = new ToggleItem(
                 new ItemBuilder(plugin.getConfig(), "menus.color-menu.italic.enabled").parse(),
                 new ItemBuilder(plugin.getConfig(), "menus.color-menu.italic.disabled").parse(),
+                plugin.getConfig().getString("menus.color-menu.italic.permission"),
                 plugin.getConfig().getInt("menus.color-menu.italic.slot"));
 
         final ConfigurationSection section = plugin.getConfig().getConfigurationSection("menus.color-menu.color-items");
@@ -60,6 +62,8 @@ public final class ColorMenu extends AbyssMenu {
             builder.setItem(item.getSlot(), item.getItem());
             builder.addClickEvent(item.getSlot(), event -> {
 
+                player.closeInventory();
+
                 if (!player.hasPermission(item.getPermission())) {
                     this.plugin.getMessageCache().sendMessage(player, "messages.no-permission");
                     return;
@@ -71,7 +75,6 @@ public final class ColorMenu extends AbyssMenu {
                                 .replace("-", " ")
                                 .replace("_", " "))));
 
-                player.closeInventory();
             });
         }
 
@@ -79,11 +82,23 @@ public final class ColorMenu extends AbyssMenu {
         builder.setItem(this.italic.getSlot(), profile.isItalic() ? this.italic.getEnabled() : this.italic.getDisabled());
 
         builder.addClickEvent(this.bold.getSlot(), event -> {
+            if (!player.hasPermission(this.bold.getPermission())) {
+                this.plugin.getMessageCache().sendMessage(player, "messages.no-permission");
+                player.closeInventory();
+                return;
+            }
+
             profile.setBold(!profile.isBold());
             this.open(player);
         });
 
         builder.addClickEvent(this.italic.getSlot(), event -> {
+            if (!player.hasPermission(this.italic.getPermission())) {
+                this.plugin.getMessageCache().sendMessage(player, "messages.no-permission");
+                player.closeInventory();
+                return;
+            }
+
             profile.setItalic(!profile.isItalic());
             this.open(player);
         });

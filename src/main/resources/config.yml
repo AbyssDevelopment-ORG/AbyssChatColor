@@ -21,7 +21,7 @@ menus:
                 lore: []
             "disabled":
                 material: "RED_DYE"
-                name: "&cBold Chat &7(Enabled)"
+                name: "&cBold Chat &7(Disabled)"
                 lore: []
         italic:
             slot: 32
@@ -32,7 +32,7 @@ menus:
                 lore: []
             "disabled":
                 material: "RED_DYE"
-                name: "&cItalic Chat &7(Enabled)"
+                name: "&cItalic Chat &7(Disabled)"
                 lore: []
         color-items:
             "red":
@@ -46,7 +46,7 @@ menus:
                 permission: "abysschatcolor.light-blue"
                 color: "&b"
                 slot: 11
-                material: "RED_STAINED_GLASS_PANE"
+                material: "LIGHT_BLUE_STAINED_GLASS_PANE"
                 name: "&bLight Blue"
                 lore: []
             "lime":
@@ -81,7 +81,7 @@ menus:
                 permission: "abysschatcolor.purple"
                 color: "&5"
                 slot: 16
-                material: "PURPLESTAINED_GLASS_PANE"
+                material: "PURPLE_STAINED_GLASS_PANE"
                 name: "&5Purple"
                 lore: []
 
@@ -99,7 +99,7 @@ messages:
     "set-color":
         sound:
             enabled: true
-            value: "FIZZ"
+            value: "BLOCK_NOTE_PLING"
             volume: 1
             pitch: 1
         message:
