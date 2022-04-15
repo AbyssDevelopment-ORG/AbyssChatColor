@@ -10,12 +10,14 @@ import net.abyssdev.abysslib.menu.templates.AbyssMenu;
 import net.abyssdev.abysslib.plugin.AbyssPlugin;
 import net.abyssdev.abysslib.storage.json.JsonStorage;
 import net.abyssdev.abysslib.text.MessageCache;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.UUID;
 
 @Getter
 public final class AbyssChatColor extends AbyssPlugin {
 
+    private final FileConfiguration config = this.getConfig("config");
     private final String defaultColor = this.getConfig().getString("settings.default-color");
     private final MessageCache messageCache = new MessageCache(this.getConfig());
     private final JsonStorage<UUID, ColorPlayer> storage = new ChatColorStorage(this);
@@ -26,7 +28,7 @@ public final class AbyssChatColor extends AbyssPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        this.loadMessages(this.messageCache, this.getConfig());
+        this.loadMessages(this.messageCache, this.config);
 
         this.colorMenu = new ColorMenu(this);
         this.command.register();
