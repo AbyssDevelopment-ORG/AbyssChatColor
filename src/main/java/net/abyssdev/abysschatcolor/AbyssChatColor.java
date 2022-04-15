@@ -27,7 +27,6 @@ public final class AbyssChatColor extends AbyssPlugin {
 
     @Override
     public void onEnable() {
-        this.saveDefaultConfig();
         this.loadMessages(this.messageCache, this.config);
 
         this.colorMenu = new ColorMenu(this);
