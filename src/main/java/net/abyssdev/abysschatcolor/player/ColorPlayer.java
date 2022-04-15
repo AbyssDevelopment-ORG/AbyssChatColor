@@ -14,13 +14,12 @@ public final class ColorPlayer {
     @Id
     private final UUID uuid;
 
-    private String color, colorName;
+    private String color;
     private boolean bold, italic;
 
     public ColorPlayer(final AbyssChatColor plugin, final UUID uuid) {
         this.uuid = uuid;
         this.color = plugin.getDefaultColor();
-        this.colorName = "None";
     }
 
     public String getColor() {

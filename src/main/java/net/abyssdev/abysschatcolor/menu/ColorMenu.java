@@ -90,7 +90,6 @@ public final class ColorMenu extends AbyssMenu {
         builder.setItem(this.italic.getSlot(), profile.isItalic() ? this.italic.getEnabled() : this.italic.getDisabled());
 
         builder.addClickEvent(this.reset.getSlot(), event -> {
-            profile.setColorName("None");
             profile.setColor(this.plugin.getDefaultColor());
             this.plugin.getMessageCache().sendMessage(player, "messages.reset-color");
         });
