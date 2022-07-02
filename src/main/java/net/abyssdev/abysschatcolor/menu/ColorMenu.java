@@ -21,38 +21,38 @@ public final class ColorMenu extends AbyssMenu {
     private final ColorItem[] colorItems;
 
     public ColorMenu(final AbyssChatColor plugin) {
-        super(plugin.getConfig(), "menus.color-menu.");
+        super(plugin.getColorConfig(), "menus.color-menu.");
 
         this.plugin = plugin;
 
         this.reset = new MenuItem(
-                new ItemBuilder(plugin.getConfig(), "menus.color-menu.reset").parse(),
-                plugin.getConfig().getInt("menus.color-menu.reset.slot"));
+                new ItemBuilder(plugin.getColorConfig(), "menus.color-menu.reset").parse(),
+                plugin.getColorConfig().getInt("menus.color-menu.reset.slot"));
 
         this.bold = new ToggleItem(
-                new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.enabled").parse(),
-                new ItemBuilder(plugin.getConfig(), "menus.color-menu.bold.disabled").parse(),
-                plugin.getConfig().getString("menus.color-menu.bold.permission"),
-                plugin.getConfig().getInt("menus.color-menu.bold.slot"));
+                new ItemBuilder(plugin.getColorConfig(), "menus.color-menu.bold.enabled").parse(),
+                new ItemBuilder(plugin.getColorConfig(), "menus.color-menu.bold.disabled").parse(),
+                plugin.getColorConfig().getString("menus.color-menu.bold.permission"),
+                plugin.getColorConfig().getInt("menus.color-menu.bold.slot"));
 
         this.italic = new ToggleItem(
-                new ItemBuilder(plugin.getConfig(), "menus.color-menu.italic.enabled").parse(),
-                new ItemBuilder(plugin.getConfig(), "menus.color-menu.italic.disabled").parse(),
-                plugin.getConfig().getString("menus.color-menu.italic.permission"),
-                plugin.getConfig().getInt("menus.color-menu.italic.slot"));
+                new ItemBuilder(plugin.getColorConfig(), "menus.color-menu.italic.enabled").parse(),
+                new ItemBuilder(plugin.getColorConfig(), "menus.color-menu.italic.disabled").parse(),
+                plugin.getColorConfig().getString("menus.color-menu.italic.permission"),
+                plugin.getColorConfig().getInt("menus.color-menu.italic.slot"));
 
-        final ConfigurationSection section = plugin.getConfig().getConfigurationSection("menus.color-menu.color-items");
+        final ConfigurationSection section = plugin.getColorConfig().getConfigurationSection("menus.color-menu.color-items");
 
         this.colorItems = new ColorItem[section.getKeys(false).size()];
 
         int index = 0;
         for (final String key : section.getKeys(false)) {
             this.colorItems[index] = new ColorItem(
-                    new ItemBuilder(plugin.getConfig(), "menus.color-menu.color-items." + key).parse(),
+                    new ItemBuilder(plugin.getColorConfig(), "menus.color-menu.color-items." + key).parse(),
                     key,
-                    plugin.getConfig().getString("menus.color-menu.color-items." + key + ".color"),
-                    plugin.getConfig().getString("menus.color-menu.color-items." + key + ".permission"),
-                    plugin.getConfig().getInt("menus.color-menu.color-items." + key + ".slot"));
+                    plugin.getColorConfig().getString("menus.color-menu.color-items." + key + ".color"),
+                    plugin.getColorConfig().getString("menus.color-menu.color-items." + key + ".permission"),
+                    plugin.getColorConfig().getInt("menus.color-menu.color-items." + key + ".slot"));
 
             index++;
         }

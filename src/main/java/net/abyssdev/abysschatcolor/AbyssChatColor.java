@@ -17,9 +17,11 @@ import java.util.UUID;
 @Getter
 public final class AbyssChatColor extends AbyssPlugin {
 
-    private final FileConfiguration config = this.getConfig("config");
-    private final String defaultColor = this.getConfig().getString("settings.default-color");
-    private final MessageCache messageCache = new MessageCache(this.getConfig());
+    private final FileConfiguration colorConfig = this.getConfig("chat-color");
+
+    private final String defaultColor = this.getColorConfig().getString("settings.default-color");
+    private final MessageCache messageCache = new MessageCache(this.getColorConfig());
+
     private final JsonStorage<UUID, ColorPlayer> storage = new ChatColorStorage(this);
     private final ColorCommand command = new ColorCommand(this);
 
@@ -27,7 +29,7 @@ public final class AbyssChatColor extends AbyssPlugin {
 
     @Override
     public void onEnable() {
-        this.loadMessages(this.messageCache, this.config);
+        this.loadMessages(this.messageCache, this.colorConfig);
 
         this.colorMenu = new ColorMenu(this);
         this.command.register();
