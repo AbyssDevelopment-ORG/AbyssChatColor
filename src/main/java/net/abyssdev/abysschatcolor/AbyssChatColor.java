@@ -2,6 +2,7 @@ package net.abyssdev.abysschatcolor;
 
 import lombok.Getter;
 import net.abyssdev.abysschatcolor.command.ColorCommand;
+import net.abyssdev.abysschatcolor.listeners.JoinListener;
 import net.abyssdev.abysschatcolor.menu.ColorMenu;
 import net.abyssdev.abysschatcolor.placeholder.ColorPlaceholderExpansion;
 import net.abyssdev.abysschatcolor.player.ColorPlayer;
@@ -34,7 +35,11 @@ public final class AbyssChatColor extends AbyssPlugin {
         this.colorMenu = new ColorMenu(this);
         this.command.register();
 
-        new ColorPlaceholderExpansion(this).register();
+        if (this.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new ColorPlaceholderExpansion(this).register();
+        }
+
+        new JoinListener(this);
     }
 
     @Override
