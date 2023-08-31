@@ -5,7 +5,7 @@ pipeline {
         stage("Build") {
             steps {
                 sh "mvn -version"
-                sh "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 mvn clean install"
+                sh "sudo JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 /opt/maven/bin/mvn clean install"
             }
             post {
                 success {
