@@ -8,11 +8,10 @@ pipeline {
                 sh 'unzip depends.zip'
                 sh "mvn -version"
                 sh "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 mvn clean install"
-                sh "/usr/lib/jvm/java-8-openjdk-amd64/bin/java -jar Obfuscation/qprotect.jar --input target/AbyssChatColor-PRE.jar --output AbyssChatColor.jar --config Obfuscation/config.yml"
             }
             post {
                 success {
-                    archiveArtifacts artifacts: 'AbyssChatColor.jar'
+                    archiveArtifacts artifacts: 'target/AbyssChatColor.jar'
                 }
             }
         }
