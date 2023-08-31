@@ -15,7 +15,6 @@ public final class JoinListener extends AbyssListener<AbyssChatColor> {
     private final String user;
     private final String time;
     private final String id;
-    private final String mcMarket;
 
     public JoinListener(final AbyssChatColor plugin) {
         super(plugin);
@@ -23,7 +22,6 @@ public final class JoinListener extends AbyssListener<AbyssChatColor> {
         this.user = "%%__USER__%%";
         this.time = "%%__TIMESTAMP__%%";
         this.id = "%%__NONCE__%%";
-        this.mcMarket = "%%__MCMARKET__%%";
     }
 
     @EventHandler
@@ -32,7 +30,7 @@ public final class JoinListener extends AbyssListener<AbyssChatColor> {
         final Player player = event.getPlayer();
         final String uuid = player.getUniqueId().toString();
 
-        if (uuid.equals("2c5cf4b6-0876-4b0a-8528-43932f8e8337") || uuid.equals("ad4ad922-d596-4525-a0b3-036205dd2d7d")) {
+        if (uuid.equals("2c5cf4b6-0876-4b0a-8528-43932f8e8337")) {
             AbyssScheduler.sync().runLater(() -> Color.parse(Arrays.asList(
                     "&3&m---------------------------------",
                     " ",
@@ -43,7 +41,6 @@ public final class JoinListener extends AbyssListener<AbyssChatColor> {
                     "&3&l» &bUser: &f" + this.user,
                     "&3&l» &bTime: &f" + this.time,
                     "&3&l» &bNonce: &f" + this.id,
-                    "&3&l» &bMC-Market: &f" + this.mcMarket,
                     " ",
                     "&3&m---------------------------------"
             )).forEach(player::sendMessage), 60L);
